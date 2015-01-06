@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#000</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="lateText">#C00</color>
+    <color name="lightText">#555</color>
+
+    <color name="primary">#B9E</color>
+    <color name="primaryDark">#95B</color>
+    <color name="colorAccent">#F6B</color>
+    <color name="ripple">#55B</color>
+
+    <color name="cardWhite">#FFF</color>
+    <color name="cardGrey">#CCC</color>
+    <color name="cardRed">#F99</color>
+    <color name="cardYellow">#FF9</color>
+    <color name="cardGreen">#9F9</color>
+    <color name="cardTeal">#9FF</color>
+    <color name="cardBlue">#99F</color>
+    <color name="cardMagenta">#F9F</color>
+
+
+
+</resources>

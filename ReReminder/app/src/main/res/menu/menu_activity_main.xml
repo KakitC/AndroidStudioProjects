@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".ActivityMain">
+    <item android:id="@+id/newTaskButt"
+        android:title="@string/newTaskButtText"
+        app:showAsAction="always|withText"
+        android:icon="@drawable/ic_action_new"
+        />
+    <item android:id="@+id/refreshButt"
+        android:title="@string/refreshButtText"
+        app:showAsAction="ifRoom|withText"
+        android:icon="@drawable/ic_action_refresh"
+        />
+</menu>

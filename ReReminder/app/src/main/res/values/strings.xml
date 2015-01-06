@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ReReminder</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Instructions in the form of tasks preloaded on app-->
+    <string-array name="defaultTasks">
+        <item>Tap a task to refresh it|1416800000000|86401000|-1</item>
+        <item>Use the menu to refresh the list or create a new task|1416840000000|86401000|-3355444</item>
+        <item>Long press a task to edit or delete it|1417200000000|86401000|-26215</item>
+    </string-array>
+
+    <string name="newTaskButtText">New Task</string>
+    <string name="refreshButtText">Refresh</string>
+
+    <string name="title_activity_create_task">Task Creation</string>
+    <string name="TaskNameLabel">Task Name</string>
+    <string name="TaskNameHint">What do you need to remember?</string>
+    <string name="TaskRepeatLabel">Repeating Time</string>
+    <string name="TaskRepeatHint">How frequently? Every:</string>
+    <string name="yearFieldText">Year(s), </string>
+    <string name="monthFieldText">months(s), </string>
+    <string name="dayFieldText">day(s),</string>
+    <string name="hourFieldText">hour(s), and </string>
+    <string name="minFieldText">minute(s).</string>
+    <string name="TaskSetTimeLabel">Set Time</string>
+    <string name="TaskSetTimeHint">When is the first reminder?</string>
+    <string name="TaskColorLabel">Color</string>
+    <string name="TaskCreateButt">Save Task</string>
+
+    <!--  Task Colors -->
+    <string-array name="TaskSpinnerColors">
+        <item>White</item>
+        <item>Grey</item>
+        <item>Red</item>
+        <item>Yellow</item>
+        <item>Green</item>
+        <item>Teal</item>
+        <item>Blue</item>
+        <item>Magenta</item>
+    </string-array>
+
+    <!-- Task long click dialog options-->
+    <string-array name="taskOptions">
+        <item>Edit task</item>
+        <item>Delete task</item>
+    </string-array>
+
+
+</resources>
