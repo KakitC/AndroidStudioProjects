@@ -5,7 +5,8 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
-    <!-- Instructions in the form of tasks preloaded on app-->
+    <!-- Instructions in the form of default tasks preloaded on app-->
+
     <string-array name="defaultTasks">
         <item>Tap a task to refresh it|1416800000000|86401000|-1</item>
         <item>Use the menu to refresh the list or create a new task|1416840000000|86401000|-3355444</item>
@@ -26,7 +27,7 @@
     <string name="hourFieldText">hour(s), and </string>
     <string name="minFieldText">minute(s).</string>
     <string name="TaskSetTimeLabel">Set Time</string>
-    <string name="TaskSetTimeHint">When is the first reminder?</string>
+    <string name="TaskSetTimeHint">When is the next reminder?</string>
     <string name="TaskColorLabel">Color</string>
     <string name="TaskCreateButt">Save Task</string>
 

@@ -3,6 +3,7 @@
     <color name="black">#000</color>
     <color name="transparent">#00000000</color>
 
+    <color name="soonText">#990</color>
     <color name="lateText">#C00</color>
     <color name="lightText">#555</color>
 

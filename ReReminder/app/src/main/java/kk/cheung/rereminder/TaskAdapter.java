@@ -22,7 +22,7 @@ import java.util.List;
 * Created by Kakit Cheung, 12/23/2014
 *
 * Acts as a bridge between the task dataset (a list), and the view renderer.
-* Has addTask() and dataSave() to access data from outside.
+* Has methods for interacting with task list (get, del, sort, add) and saving/loading data
 * Contains ViewHolder class, which acts as a handle for the various views
 * that are in each task card.
 */
@@ -56,7 +56,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         @Override
         public void onClick(View view) {
             taskList.get(getPosition()).setSetTime(Calendar.getInstance().getTimeInMillis());
-            Collections.sort(taskList);
             ((ActivityMain) parentAdapter.context).refreshView();
         }
 
@@ -73,14 +72,15 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
     //CONSTRUCTOR
     public TaskAdapter(Context context, String[] taskDataArray) {
         List<Task> taskList = new LinkedList<>();
+        // Save data string parser
         for (String td : taskDataArray) {
             String[] tokens = td.split("\\|");
             if (tokens.length == 4) { taskList.add(new Task(tokens)); }
         }
-        Collections.sort(taskList);
 
         TaskAdapter.context = context;
         TaskAdapter.taskList = taskList;
+        sortTasks();
     }
 
     // Create new views (invoked by the layout manager)
@@ -95,7 +95,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         return new ViewHolder(v);
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
+    // Rebuild the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         // - get element from your dataset at this position
@@ -111,15 +111,22 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         //Set repeat time
         holder.taskRepeatTime.setText(getFriendlyRepeatTime(thisTask.getRepeatTime()));
 
+        //Set time difference text and color
         String timeDiffText;
         Date taskDueDate = new Date(thisTask.getSetTime()+thisTask.getRepeatTime());
         Date now = new Date();
+        Date soon = new Date(now.getTime() + DateUtils.DAY_IN_MILLIS);
         timeDiffText = DateUtils.getRelativeTimeSpanString(
                 taskDueDate.getTime()).toString();
         holder.taskTimeDiff.setText(timeDiffText);
+
         if (now.after(taskDueDate)) {
             holder.taskTimeDiff.setTextColor(context.getResources().
                     getColor(R.color.lateText));
+        }
+        else if (soon.after(taskDueDate)) {
+            holder.taskTimeDiff.setTextColor(context.getResources().
+                    getColor(R.color.soonText));
         }
         else {
             holder.taskTimeDiff.setTextColor(context.getResources().
@@ -132,21 +139,27 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         return taskList.size();
     }
 
-    // Add a task to the backing list, and resort by due date
+    // Add a premade task to this adapter's list
     public void addTask(Task newTask) {
         taskList.add(newTask);
-        Collections.sort(taskList);
     }
 
+    // Remove a task at pos from the list
     public void deleteTask(int pos) {
         taskList.remove(pos);
+    }
+
+    // Resort the task list
+    public void sortTasks() {
         Collections.sort(taskList);
     }
 
+    // get() a task at the position
     public Task getTask(int pos) {
         return taskList.get(pos);
     }
 
+    //Creates a \ separated list of all tasks for saving data "<task>\<task>"
     //Basically a toString(), but only just the task list dataset
     //<taskdata>\<taskdata>\<taskdata>
     public String dataSave() {

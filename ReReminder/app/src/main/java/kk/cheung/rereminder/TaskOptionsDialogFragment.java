@@ -56,6 +56,7 @@ public class TaskOptionsDialogFragment extends DialogFragment {
                     listener.onDeleteClick(pos);
                 }
                 else {
+                    //epic fail case, how is this possible
                     CharSequence toastText = "Lol what did you press";
                     Toast toast = Toast.makeText(getActivity(), toastText,Toast.LENGTH_SHORT);
                     toast.show();

@@ -2,6 +2,7 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">4dp</dimen>
     <dimen name="activity_vertical_margin">4dp</dimen>
+
     <dimen name="smallSubviewMargin">5dp</dimen>
     <dimen name="bigSubviewMargin">10dp</dimen>
     <dimen name="TaskFieldMargin">20dp</dimen>

@@ -39,7 +39,7 @@ public class Task implements Comparable<Task> {
         color = task.getColor();
     }
 
-    //Constructor parse from a string
+    //Constructor from string information, already pre-parsed
     //"Task Name|<setTime in millis>|<repeatTime in millis>|<Background color int>"
     public Task(String[] taskData) {
 

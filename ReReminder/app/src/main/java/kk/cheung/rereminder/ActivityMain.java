@@ -50,7 +50,8 @@ public class ActivityMain extends Activity
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        //Maybe file reading goes in onResume()
+        //Read saved data from file
+        //Maybe goes in onResume()?
         //Log.d("ActivityMain","Starting activity");
         try {
             String savedString = getStringFromFile(SAVE_FILENAME);
@@ -76,7 +77,8 @@ public class ActivityMain extends Activity
     protected void onPause() {
         super.onPause();
 
-        // Save data, maybe supposed to be in onStop()
+        // Save task list data
+        // maybe supposed to be in onStop()
 
         OutputStream saveFile = null;
 
@@ -137,22 +139,22 @@ public class ActivityMain extends Activity
         startActivityForResult(newTaskIntent,NEW_TASK_ACTIVITY_CODE);
     }
 
-
+    //Update the task list by sorting and reloading the dataset to the view, after making changes
     public void refreshView() {
         //TODO animate refresh (flash white? load cards by animation?)
+        mAdapter.sortTasks();
         mAdapter.notifyDataSetChanged();
     }
 
-    //Delete a task at that position, refresh
+    //Delete a task at that position, and refresh
     public void onDeleteClick(int pos) {
         mAdapter.deleteTask(pos);
+        refreshView();
 
         Context context = getApplicationContext();
         CharSequence toastText = "Task deleted";
         Toast toast = Toast.makeText(context, toastText,Toast.LENGTH_SHORT);
         toast.show();
-
-        refreshView();
     }
 
     //Gets task data from position in the task list, and sends to ActivityCreateTask
@@ -176,7 +178,7 @@ public class ActivityMain extends Activity
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         //Edit existing task
-        //Probably can edit in place, everything's by reference
+        //edits in place, everything's by reference
         if (requestCode == EDIT_TASK_ACTIVITY_CODE && resultCode == RESULT_OK) {
             Bundle returnData = data.getBundleExtra(ActivityCreateTask.NEW_BUNDLE_DATA);
             Task oldTask = mAdapter.getTask(returnData.getInt(TaskOptionsDialogFragment.POS_KEY));
@@ -187,7 +189,7 @@ public class ActivityMain extends Activity
             oldTask.setColor(returnData.getInt(ActivityCreateTask.COLOR));
 
             //mAdapter.addTask(oldTask);
-            mAdapter.notifyDataSetChanged();
+            refreshView();
         }
 
         //Create a new task, add it to the list
