@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Quadratic Solver</string>
+    <string name="hello_world">this is a butt</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="title">Quadratic Equation Solver</string>
+    <string name="instructions">Enter the coefficients of your quadratic equation below.</string>
+    <string name="xsquared">*X^2 + </string>
+    <string name="x">*X + </string>
+    <string name="hintA">A</string>
+    <string name="hintB">B</string>
+    <string name="hintC">C</string>
+    <string name="solve">=</string>
+    <string name="roots">Roots:</string>
+    <string name="x1">X_1:</string>
+    <string name="x2">X_2:</string>
+    <string name="blank">____</string>
+    <string name="buttSolveDescrip">Solve Button</string>
+</resources>
